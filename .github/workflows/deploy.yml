@@ -32,7 +32,7 @@ jobs:
           echo "Publish dir: $PUBLISH_DIR"
           mkdir -p ./_site
           cp -r "$PUBLISH_DIR/"* ./_site/
-
+          ls -la ./_site  # kiểm tra file index.html có tồn tại không
 
       - name: Add .nojekyll and 404.html
         run: |
