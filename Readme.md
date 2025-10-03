@@ -1,4 +1,4 @@
-# Setup Tailwindcc
+# Setup Tailwindscc
 
 ```
 npm install tailwindcss @tailwindcss/cli --save-dev
