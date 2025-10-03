@@ -313,7 +313,8 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
-
+	# Nếu là project site, thay REPO_NAME bằng tên repo để đặt base path đúng.
+      	# Nếu là user site (username.github.io), bạn có thể bỏ StaticWebAssetBasePath.
       - name: Publish
         run: |
           dotnet restore
@@ -326,6 +327,7 @@ jobs:
       - name: Add .nojekyll and 404.html
         run: |
           touch ./_site/.nojekyll
+	# Fallback routing: copy index.html to 404.html
           cp ./_site/index.html ./_site/404.html
 
       - name: Upload artifact
