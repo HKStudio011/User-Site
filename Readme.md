@@ -23,6 +23,8 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,8 +34,6 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      # Nếu là project site, thay REPO_NAME bằng tên repo để đặt base path đúng.
-      # Nếu là user site (username.github.io), bạn có thể bỏ StaticWebAssetBasePath.
       - name: Publish
         run: |
           dotnet restore
@@ -41,12 +41,11 @@ jobs:
           PUBLISH_DIR=$(find . -path "*/bin/Release/*/publish/wwwroot" -type d | head -n 1)
           echo "Publish dir: $PUBLISH_DIR"
           mkdir -p ./_site
-          cp -r "$PUBLISH_DIR/" ./_site/
+          cp -r "$PUBLISH_DIR/"* ./_site/
 
       - name: Add .nojekyll and 404.html
         run: |
           touch ./_site/.nojekyll
-          # Fallback routing: copy index.html to 404.html
           cp ./_site/index.html ./_site/404.html
 
       - name: Upload artifact
