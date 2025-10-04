@@ -43,9 +43,10 @@
      ```
      npm install chart.js
      ```
-   * **Autoprefixer (không bắt buộc với v4 khi dùng plugin Vite):**
+   * **JQuery:**
      ```
-     npm install -D autoprefixer
+     npm install jquery
+     npm install --save-dev @types/jquery
      ```
 4. **Cài chokidar-cli**
 
@@ -80,18 +81,18 @@
      build: {
        outDir: path.resolve(__dirname, '../wwwroot/js'),
        emptyOutDir: true,
-       cssCodeSplit: true,
+       lib: {
+         entry: path.resolve(__dirname, 'src/main.ts'),
+         formats: ['es'], // build ra ES module
+         fileName: () => 'assets/main.js'
+       },
        rollupOptions: {
          output: {
-           entryFileNames: 'assets/main.js',
-           chunkFileNames: 'assets/[name].js',
            assetFileNames: 'assets/style.css'
          }
        }
      },
-     plugins: [
-       tailwindcss()
-     ]
+     plugins: [tailwindcss()]
    });
    ```
 2. **[style.css]() (kích hoạt Tailwind):**
@@ -119,6 +120,10 @@
        }
      });
    };
+
+   export function testViteLibrary() {
+     console.log("Vite library successfully imported!");
+   }
    ```
 4. **[tailwind.config.js]() (để Tailwind quét class trong Razor):**
    ```
@@ -183,6 +188,14 @@
    </button>
 
    <canvas id="myChart" width="400" height="200"></canvas>
+
+   <script type="module">
+       import { $,testViteLibrary} from '/js/assets/main.js';
+
+       $(document).ready(function () {
+           testViteLibrary();
+   	});
+   </script>
 
    @code {
      async Task Show() => await JS.InvokeVoidAsync("showChart");

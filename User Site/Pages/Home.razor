@@ -3,28 +3,98 @@
 
 <PageTitle>Home</PageTitle>
 
-<div class="text-center space-y-6">
-    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight
-               text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
-        Tailwind đang hoạt động?
-    </h1>
-    <p class="text-slate-300 max-w-md mx-auto">
-        Nếu bạn thấy tiêu đề gradient, nền tối và các nút có style, Tailwind đã chạy ok.
-    </p>
+<div class="relative w-screen h-screen overflow-hidden overflow-y-hidden overflow-x-hidden">
+    <canvas id="gradient" class="absolute inset-0 w-full h-full z-0"></canvas>
+    <div class="absolute inset-0 z-1 w-full h-full flex flex-col">
+        <div class="text-center space-y-6 ">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight
+                   text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
+                HK Studio
+            </h1>
+            <div class="mx-auto w-64 h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full bg-emerald-500 animate-pulse"></div>
+            </div>
+        </div>
+        <div class="m-6 relative flex-1">
+            <div class="bg-black rounded-[2vw] opacity-30 absolute inset-0 z-0">
+            </div>
+            <div class="absolute inset-0 z-1 w-full h-full p-6 flex flex-col">
+                <h1 class="text-3xl font-bold mb-6 text-center">🌐 Danh sách kênh & dự án</h1>
 
-    <div class="flex items-center justify-center gap-3">
-        <button class="px-5 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 active:scale-95 transition">
-            Nút chính
-        </button>
-        <button class="px-5 py-2 rounded-lg border border-slate-500 hover:border-slate-400 text-slate-200 transition">
-            Nút phụ
-        </button>
-    </div>
+                <div class="overflow-clip overflow-y-auto overflow-x-hidden flex-1">
+                    <!-- Nhóm YouTube -->
+                    <div class="mb-8">
+                        <h2 class="text-xl font-semibold text-red-600 mb-4">▶️ YouTube</h2>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <li class="bg-white p-4 rounded shadow hover:shadow-lg transition">
+                                <h3 class="font-bold text-lg">Code Dễ Hiểu</h3>
+                                <p class="text-sm text-gray-600">Video hướng dẫn lập trình cơ bản</p>
+                            </li>
+                            <li class="bg-white p-4 rounded shadow hover:shadow-lg transition">
+                                <h3 class="font-bold text-lg">Tech Review</h3>
+                                <p class="text-sm text-gray-600">Đánh giá sản phẩm công nghệ</p>
+                            </li>
+                                                        <li class="bg-white p-4 rounded shadow hover:shadow-lg transition">
+                                <h3 class="font-bold text-lg">Tech Review</h3>
+                                <p class="text-sm text-gray-600">Đánh giá sản phẩm công nghệ</p>
+                            </li>
+                            
+                        </ul>
+                    </div>
 
-    <div class="mx-auto w-64 h-2 bg-slate-700 rounded-full overflow-hidden">
-        <div class="h-full w-1/2 bg-emerald-500 animate-pulse"></div>
+                    <!-- Nhóm TikTok -->
+                    <div class="mb-8">
+                        <h2 class="text-xl font-semibold text-pink-500 mb-4">🎵 TikTok</h2>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <li class="bg-white p-4 rounded shadow hover:shadow-lg transition">
+                                <h3 class="font-bold text-lg">Dev Tips</h3>
+                                <p class="text-sm text-gray-600">Mẹo lập trình nhanh gọn</p>
+                            </li>
+                            <li class="bg-white p-4 rounded shadow hover:shadow-lg transition">
+                                <h3 class="font-bold text-lg">Fun Coding</h3>
+                                <p class="text-sm text-gray-600">Clip ngắn giải trí về code</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Nhóm GitHub -->
+                    <div>
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4">💻 GitHub</h2>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <li class="bg-white p-4 rounded shadow hover:shadow-lg transition">
+                                <h3 class="font-bold text-lg">awesome-project</h3>
+                                <p class="text-sm text-gray-600">Repo tổng hợp tài nguyên hữu ích</p>
+                                <a href="https://github.com/username/awesome-project"
+                                    class="text-blue-500 text-sm hover:underline">Xem trên GitHub</a>
+                            </li>
+                            <li class="bg-white p-4 rounded shadow hover:shadow-lg transition">
+                                <h3 class="font-bold text-lg">my-portfolio</h3>
+                                <p class="text-sm text-gray-600">Website cá nhân open-source</p>
+                                <a href="https://github.com/username/my-portfolio"
+                                    class="text-blue-500 text-sm hover:underline">Xem trên GitHub</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 </div>
+
+<script type="module">
+    import { $, testViteLibrary, initNeatGradient } from '/js/assets/main.js';
+
+    $(document).ready(function ()
+    {
+        testViteLibrary();
+        initNeatGradient();
+    });
+
+</script>
+
 
 @code {
 
